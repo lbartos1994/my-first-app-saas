@@ -12,8 +12,11 @@ public class HelloController {
      * :Hello from default → fallback, jeśli ENV nie istnieje
      * brak application.properties → cloud-style
      * */
-    @Value("${GREETING_TEXT:Hello from default}")
+    @Value("${greeting_text:Hello from default}")
     private String greeting;
+
+    @Value("${greeting_text_v2:Hello from default V2}")
+    private String greetingV2;
 
     @Value("${spring.profiles.active:default}")
     private String profile;
@@ -21,6 +24,11 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello() {
         return greeting;
+    }
+
+    @GetMapping("/hello/v2")
+    public String helloV2() {
+        return greetingV2;
     }
 
     @GetMapping("/profile")
