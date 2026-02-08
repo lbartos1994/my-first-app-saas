@@ -32,4 +32,9 @@ public class HelloController {
     public String boom() {
         throw new IllegalArgumentException("Error occurred during request - booom");
     }
+
+    @GetMapping("/storm")
+    public String storm() {
+        return greeting + " " + profile + " " + "storm";
+    }
 }
