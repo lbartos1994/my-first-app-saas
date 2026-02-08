@@ -37,4 +37,9 @@ public class HelloController {
     public String storm() {
         return greeting + " " + profile + " " + "storm";
     }
+
+    @GetMapping("/ghost")
+    public String ghost() {
+        return greeting + " " + profile + " " + "ghost";
+    }
 }
