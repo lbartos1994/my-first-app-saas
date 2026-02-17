@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,5 +64,15 @@ public class HelloController {
         String string = LocalDateTime.now().toString();
         map.put("time", string);
         return map;
+    }
+
+    @GetMapping("/session")
+    public String session(HttpSession session) {
+        Integer counter = (Integer) session.getAttribute("counter");
+        if (counter == null) counter = 0;
+        counter++;
+        session.setAttribute("counter", counter);
+        return "Counter: " + counter +
+                " | Instance: " + System.getenv("WEBSITE_INSTANCE_ID");
     }
 }
