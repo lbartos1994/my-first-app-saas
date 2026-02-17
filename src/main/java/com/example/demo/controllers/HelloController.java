@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class HelloController {
 
@@ -49,5 +53,14 @@ public class HelloController {
     @GetMapping("/ghost")
     public String ghost() {
         return greeting + " " + profile + " " + "ghost";
+    }
+
+    @GetMapping("/whoami")
+    public Map<String, String> whoami() {
+        Map<String, String> map = new HashMap<>();
+        map.put("hostname", System.getenv("WEBSITE_INSTANCE_ID"));
+        map.put("instance", System.getenv("COMPUTERNAME"));
+        map.put("time", LocalDateTime.now().toString());
+        return map;
     }
 }
