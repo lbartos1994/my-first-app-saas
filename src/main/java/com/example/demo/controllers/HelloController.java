@@ -60,7 +60,8 @@ public class HelloController {
         Map<String, String> map = new HashMap<>();
         map.put("hostname", System.getenv("WEBSITE_INSTANCE_ID"));
         map.put("instance", System.getenv("COMPUTERNAME"));
-        map.put("time", LocalDateTime.now().toString());
+        String string = LocalDateTime.now().toString();
+        map.put("time", string);
         return map;
     }
 }

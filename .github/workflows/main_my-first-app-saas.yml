@@ -58,6 +58,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'My-first-app-saas'
-          slot-name: 'staging'
           package: '*.jar'
           
